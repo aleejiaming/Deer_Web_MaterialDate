@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- <constant name="struts.devMode" value="true" /> -->
+
+<!-- 保留測試tomcat可以正常運作 <package name="basicstruts2" extends="struts-default"> 
+	<action name="index"> <result>/index.jsp</result> </action> -->
+
+<!-- <action name="customer"> <result>/WEB-INF/customer/CustomerOrder.jsp</result> 
+	</action> <action name="customeradd"> <result>/WEB-INF/customer/CustomerAdd.jsp</result> 
+	</action> </package> -->
+
+<!-- 在struts.xml中定義一個預設的action -->
+<struts>
+	<!--  
+	<package name="defult" extends="struts-default">
+		<default-action-ref name="index"></default-action-ref>
+		<action name="index">
+			<result type="dispatcher">login.jsp</result>
+		</action>
+	</package>
+	-->
+		
+	<package name="customer" extends="struts-default"
+		namespace="/customer">
+
+		<action name="customerQry"
+			class="com.controller.Customer_Controller" method="CustomerQry">
+			<!-- 導向同樣的網站，但代表的狀態不同 success 表是 session 還在 ok 表示資料第一執行(session沒了) -->
+			<result name="success">/WEB-INF/customer/CustomerQry.jsp</result>
+
+		</action>
+		<action name="customermaint"
+			class="com.controller.Customer_Controller" method="customerAdd">
+			<result name="success" type="dispatcher">/WEB-INF/customer/CustomerAdd.jsp
+			</result>
+			<result name="ok" type="dispatcher">/WEB-INF/customer/CustomerAdd.jsp
+			</result>
+		</action>
+	</package>
+
+	<package name="register" extends="struts-default"
+		namespace="/register">
+
+		<!-- 提供註冊畫面 -->
+		<action name="register"
+			class="com.controller.Register_Controller">
+			<result>/WEB-INF/register/register.jsp</result>
+		</action>
+		<!-- 登入功能 -->
+		<action name="login" class="com.controller.Register_Controller"
+			method="loginForm">
+			<result name="success">/WEB-INF/register/login.jsp</result>
+			<result name="ok">/WEB-INF/register/ok.jsp</result>
+			<result name="error">/WEB-INF/register/error.jsp</result>
+		</action>
+		<!-- 註冊功能 -->
+		<action name="usersave"
+			class="com.controller.Register_Controller" method="registerSave">
+			<result name="success">/WEB-INF/register/showresult.jsp</result>
+			<result name="failure">/WEB-INF/register/error.jsp</result>
+		</action>
+	</package>
+
+	<include file="Material_Store.xml"></include>
+
+
+
+</struts>
+  		

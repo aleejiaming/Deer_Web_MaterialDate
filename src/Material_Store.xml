@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="Matreial_Store" extends="struts-default"
+		namespace="/product">
+		<!-- 材料庫存表單 -->
+		<action name="materialstoreQry"
+			class="com.controller.Material_Store_Controller"
+			method="MaterialStoreQry">
+			<result name="success">/WEB-INF/product/productForm.jsp</result>
+			<result name="ok">/WEB-INF/product/productForm.jsp</result>
+		</action>
+		<action name="materialStore"
+			class="com.controller.Material_Store_Controller"
+			method="MaterialStoreAdd">
+			<result name="success">/WEB-INF/product/productAdd.jsp</result>
+			<result name="ok">/WEB-INF/product/productAdd.jsp</result>
+		</action>
+		<action name = "orderAdd"
+			class = "com.controller.Order_Controller"
+			method = "OrderAdd">
+			<result name="success">/WEB-INF/order/OrderAdd.jsp</result>
+			<result name="ok">/WEB-INF/order/OrderAdd.jsp</result>
+		</action>
+		<action name = "orderQry"
+			class = "com.controller.Order_Controller"
+			method = "orderQry">
+			<result name="success">/WEB-INF/order/OrderQry.jsp</result>
+			<result name="ok">/WEB-INF/order/OrderQry.jsp</result>
+		</action>
+		<action name = "cusnumValidate" class = "com.controller.Order_Controller"
+			method = "cusnum_Validate">
+		</action>
+	</package>
+</struts>
